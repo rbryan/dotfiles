@@ -1,0 +1,32 @@
+#default padding
+set padding 5 5 5 31
+
+#bindings
+bind c exec xfce4-terminal
+bind f exec firefox
+bind d exec dmenu_run
+startup_message off
+
+#set background and start compositing
+exec wmsetbg -s /usr/share/wallpapers/norway.jpg
+exec xcompmgr -c -f -D 5
+
+#volume buttons
+unmanage xfce4-notifyd
+exec xfce4-volumed
+
+#start lxpanel
+unmanage panel
+exec lxpanel
+
+#sleep command
+alias sleep exec sudo su -c "echo mem> /sys/power/state"
+
+#fullscreen for movies and stuff
+alias fullscreen exec ratpoison -c "set padding 0 0 0 0"
+alias padded	exec ratpoison -c "set padding 5 5 5 31"
+
+#store window settings
+alias store exec ratpoison -c "fdump" > ~/.ratwinsave
+alias restore exec ratpoison -c "frestore $(cat ~/.ratwinsave)"
+
